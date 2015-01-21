@@ -3,7 +3,7 @@
         email = yoshikawa@topotal.com
 [core]
         editor = vim
-        excludesfile = /Users/yoshikawa/.gitignore
+        excludesfile = ~/.gitignore
 [push]
         default = current
 [filter "media"]
