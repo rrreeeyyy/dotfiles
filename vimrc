@@ -31,7 +31,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'sheerun/vim-polyglot'
@@ -54,21 +54,13 @@ NeoBundle 'honza/vim-snippets'
 "" Color
 NeoBundle 'tomasr/molokai'
 
-"" Vim-Bootstrap Updater
-NeoBundle 'sherzberg/vim-bootstrap-updater'
-
-let g:vim_bootstrap_langs = "c,ruby,haskell,go,python,html,javascript"
-
 "" Custom bundles
 
 NeoBundle 'vim-scripts/c.vim'
 
 
-"" Python Bundle
-NeoBundle "davidhalter/jedi-vim"
-NeoBundle "scrooloose/syntastic"
-NeoBundle "majutsushi/tagbar"
-NeoBundle "Yggdroot/indentLine"
+"" Lisp Bundle
+NeoBundle 'vim-scripts/slimv.vim'
 
 
 "" Javascript Bundle
@@ -82,7 +74,15 @@ NeoBundle 'gorodinskiy/vim-coloresque'
 NeoBundle 'tpope/vim-haml'
 
 
+"" Python Bundle
+NeoBundle "davidhalter/jedi-vim"
+NeoBundle "scrooloose/syntastic"
+NeoBundle "majutsushi/tagbar"
+NeoBundle "Yggdroot/indentLine"
+
+
 NeoBundle "eagletmt/neco-ghc"
+NeoBundle "Shougo/neocomplete.vim"
 NeoBundle "dag/vim2hs"
 NeoBundle "pbrisbin/vim-syntax-shakespeare"
 
@@ -100,6 +100,11 @@ NeoBundle "thoughtbot/vim-rspec"
 NeoBundle "majutsushi/tagbar"
 
 
+
+"" Include user's extra bundle
+if filereadable(expand("~/.vimrc.local.bundles"))
+  source ~/.vimrc.local.bundles
+endif
 
 call neobundle#end()
 
@@ -120,6 +125,10 @@ set fileencodings=utf-8
 
 "" Fix backspace indent
 set backspace=indent,eol,start
+
+"" allow plugins by file type
+filetype on
+filetype plugin on
 
 "" Tabs. May be overriten by autocmd rules
 set tabstop=4
@@ -149,11 +158,12 @@ set nobackup
 set noswapfile
 
 set fileformats=unix,dos,mac
+set backspace=indent,eol,start
 set showcmd
 set shell=/bin/sh
 
 "*****************************************************************************
-"" Visual Settings
+"" Visual Settigns
 "*****************************************************************************
 syntax on
 set ruler
@@ -167,7 +177,7 @@ set mousemodel=popup
 set t_Co=256
 set nocursorline
 set guioptions=egmrti
-set gfn=Monospace\ 10
+set gfn=Monospace\ 8
 
 if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
@@ -197,6 +207,9 @@ set scrolloff=3
 "" Status bar
 set laststatus=2
 
+"" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
 "" Use modeline overrides
 set modeline
 set modelines=10
@@ -219,14 +232,12 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 "" no one is really happy until you have this shortcuts
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
-cnoreabbrev Qall! qall!
 cnoreabbrev Wq wq
 cnoreabbrev Wa wa
 cnoreabbrev wQ wq
 cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
-cnoreabbrev Qall qall
 
 "" NERDTree configuration
 let g:NERDTreeChDirMode=2
@@ -272,35 +283,20 @@ endif
 "" Autocmd Rules
 "*****************************************************************************
 "" The PC is fast enough, do syntax highlight syncing from start
-augroup vimrc-sync-fromstart
-  autocmd!
-  autocmd BufEnter * :syntax sync fromstart
-augroup END
+autocmd BufEnter * :syntax sync fromstart
 
 "" Remember cursor position
-augroup vimrc-remember-cursor-position
-  autocmd!
-  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-augroup END
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 "" txt
-augroup vimrc-wrapping
-  autocmd!
-  autocmd BufRead,BufNewFile *.txt call s:setupWrapping()
-augroup END
+au BufRead,BufNewFile *.txt call s:setupWrapping()
 
 "" make/cmake
-augroup vimrc-make-cmake
-  autocmd!
-  autocmd FileType make setlocal noexpandtab
-  autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
-augroup END
+au FileType make set noexpandtab
+autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
 
 if has("gui_running")
-  augroup vimrc-white-space
-    autocmd!
-    autocmd BufWritePre * :call TrimWhiteSpace()
-  augroup END
+  autocmd BufWritePre * :call TrimWhiteSpace()
 endif
 
 set autoread
@@ -316,7 +312,6 @@ noremap <Leader>v :<C-u>vsplit<CR>
 noremap <Leader>ga :!git add .<CR>
 noremap <Leader>gc :!git commit -m '<C-R>="'"<CR>
 noremap <Leader>gsh :!git push<CR>
-noremap <Leader>gll :!git pull<CR>
 noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gd :Gvdiff<CR>
@@ -369,10 +364,6 @@ let g:airline_enable_syntastic = 1
 nnoremap <silent> <leader>S :call TrimWhiteSpace()<cr>:let @/=''<CR>
 
 "" Copy/Paste/Cut
-if has('unnamedplus')
-  set clipboard=unnamed,unnamedplus
-endif
-
 noremap YY "+y<CR>
 noremap P "+gP<CR>
 noremap XX "+x<CR>
@@ -408,13 +399,17 @@ nmap <silent> <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
 
+
+
+let g:javascript_enable_domhtmlcss = 1
+
+
+
+
 " vim-python
-augroup vimrc-python
-  autocmd!
-  autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=79
-      \ formatoptions+=croq softtabstop=4 smartindent
-      \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
-augroup END
+autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=79
+    \ formatoptions+=croq softtabstop=4 smartindent
+    \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 
 " jedi-vim
 let g:jedi#popup_on_dot = 0
@@ -428,7 +423,6 @@ let g:jedi#completions_command = "<C-Space>"
 
 " syntastic
 let g:syntastic_python_checkers=['python', 'flake8']
-let g:syntastic_python_flake8_post_args='--ignore=W391'
 
 " vim-airline
 let g:airline#extensions#virtualenv#enabled = 1
@@ -439,15 +433,10 @@ nmap <silent> <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
 
-let g:javascript_enable_domhtmlcss = 1
-
-
-
-
 let g:haskell_conceal_wide = 1
 let g:haskell_multiline_strings = 1
 let g:necoghc_enable_detailed_browse = 1
-autocmd Filetype haskell setlocal omnifunc=necoghc#omnifunc
+setlocal omnifunc=necoghc#omnifunc
 
 
 " Tagbar
@@ -471,11 +460,8 @@ let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
 
-augroup vimrc-ruby
-  autocmd!
-  autocmd BufNewFile,BufRead *.rb,*.rbw,*.gemspec setlocal filetype=ruby
-  autocmd Filetype ruby setlocal tabstop=2 softtabstop=2 shiftwidth=2
-augroup END
+au BufNewFile,BufRead *.rb,*.rbw,*.gemspec set filetype=ruby
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
