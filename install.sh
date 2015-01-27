@@ -33,6 +33,7 @@ get_dotfiles(){
   set +e
 
   ls -1 ${workdir} |
+  grep -v "README.md" |
   grep -v ${scriptname}
   return 0
 }
