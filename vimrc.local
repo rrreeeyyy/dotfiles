@@ -15,3 +15,5 @@ let g:neosnippet#snippets_directory = [
       \'~/.vim/bundle/serverspec-snippets',
       \'~/.vim/bundle/itamae-snippets',
       \]
+
+let g:syntastic_ruby_checkers = ['rubocop']
