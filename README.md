@@ -13,3 +13,7 @@
 ## Ruby
 
 - Rubocop
+
+## JavaScript
+
+- jsxhint
