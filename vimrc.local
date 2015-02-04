@@ -1,7 +1,9 @@
+" global settings
 set expandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
+autocmd FileType * setlocal formatoptions-=ro
 
 " Neocomplete settings
 let g:neocomplete#enable_at_startup = 1
@@ -10,7 +12,7 @@ if !exists('g:neocomplete#force_omni_input_patterns')
 endif
 let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neosnippet#snippets_directory = [
-      \'~/.vim/snippets',
+      \'~/.vim-snippets',
       \'~/.vim/bundle/serverspec-snippets',
       \'~/.vim/bundle/itamae-snippets',
       \]
