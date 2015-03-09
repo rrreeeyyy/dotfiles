@@ -6,5 +6,6 @@
   "unused": true,
   "strict": true,
   "trailing": true,
-  "browserify": true
+  "browserify": true,
+  "jasmine": true
 }
