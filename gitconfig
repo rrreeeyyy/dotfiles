@@ -26,3 +26,5 @@
         pus = push
         puh = push
         pl = !git pull && git submodule update --init
+[merge]
+	tool = vimdiff
