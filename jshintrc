@@ -7,5 +7,5 @@
   "strict": true,
   "trailing": true,
   "browserify": true,
-  "jasmine": true
+  "jasmine": true,
 }
