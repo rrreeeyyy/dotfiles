@@ -1,3 +1,6 @@
 NeoBundle 'glidenote/serverspec-snippets.git'
 NeoBundle 'tacahilo/itamae-snippets'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'matchit.zip'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'taglist.vim'
