@@ -16,4 +16,4 @@
 
 ## JavaScript
 
-- jsxhint
+- eslint
