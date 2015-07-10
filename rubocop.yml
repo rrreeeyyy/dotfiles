@@ -1,0 +1,78 @@
+AllCops:
+  Exclude:
+    - "vendor/**/*"
+  DisplayCopNames: true
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/BracesAroundHashParameters:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/DotPosition:
+  EnforcedStyle: trailing
+
+Style/EmptyElse:
+  EnforcedStyle: empty
+
+Style/GuardClause:
+  MinBodyLength: 5
+
+Style/Lambda:
+  Enabled: false
+
+Style/NumericLiterals:
+  MinDigits: 7
+
+Style/RedundantReturn:
+  AllowMultipleReturnValues: true
+
+Style/SignalException:
+  EnforcedStyle: only_raise
+
+# `||` も align に使うことがあるので追加する
+Style/SpaceAroundOperators:
+  MultiSpaceAllowedForOperators:
+    - "="
+    - "=>"
+    - "||"
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/SingleLineBlockParams:
+  Enabled: false
+
+Style/SingleSpaceBeforeFirstArg:
+  Enabled: false
+
+Style/TrailingComma:
+  EnforcedStyleForMultiline: comma
+
+Lint/UnderscorePrefixedVariableName:
+  Enabled: false
+
+Lint/UnusedMethodArgument:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/LineLength:
+  Max: 160
+  Exclude:
+    - "db/migrate/*.rb"
+
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - "db/migrate/*.rb"
+
+Metrics/PerceivedComplexity:
+  Max: 8
