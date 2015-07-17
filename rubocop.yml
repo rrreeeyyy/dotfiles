@@ -71,6 +71,7 @@ Metrics/LineLength:
 
 Metrics/MethodLength:
   Max: 20
+  CountComments: false
   Exclude:
     - "db/migrate/*.rb"
 
