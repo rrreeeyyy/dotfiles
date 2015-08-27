@@ -10,7 +10,8 @@
     "mocha": false,
     "jasmine": false,
     "amd": true,
-    "es6": true
+    "es6": true,
+    "jquery": true
   },
   "rules": {
     "quotes": [2, "single"],

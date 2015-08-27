@@ -5,6 +5,7 @@ set shiftwidth=2
 set softtabstop=2
 set textwidth=0
 set formatoptions=q
+set conceallevel=0
 autocmd FileType * setlocal formatoptions-=ro
 
 " Neocomplete settings
