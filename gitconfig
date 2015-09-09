@@ -1,5 +1,5 @@
 [user]
-        name = YOSHIKAWA Ryota
+        name = Yoshikawa Ryota
         email = yoshikawa@rrreeeyyy.com
 [core]
         editor = vim
@@ -27,4 +27,6 @@
         puh = push
         pl = !git pull && git submodule update --init
 [merge]
+	tool = vimdiff
+[diff]
 	tool = vimdiff
