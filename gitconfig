@@ -8,8 +8,8 @@
         default = current
 [filter "media"]
         required = true
-        clean = git media clean %f
-        smudge = git media smudge %f
+	clean = git media clean %f
+	smudge = git media smudge %f
 [color]
         diff = auto
         status = auto
@@ -30,3 +30,7 @@
 	tool = vimdiff
 [diff]
 	tool = vimdiff
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true

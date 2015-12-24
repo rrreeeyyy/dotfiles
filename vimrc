@@ -498,7 +498,6 @@ let g:tagbar_type_ruby = {
     \ ]
 \ }
 
-
 "" Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
