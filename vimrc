@@ -96,6 +96,7 @@ NeoBundle "fatih/vim-go"
 
 
 "" Ruby Bundle
+NeoBundle "vim-ruby/vim-ruby"
 NeoBundle "tpope/vim-rails"
 NeoBundle "tpope/vim-rake"
 NeoBundle "tpope/vim-projectionist"
