@@ -3,3 +3,4 @@ config/gcloud
 config/tower-of-babel
 config/workshopper
 config/configstore
+config/menus
