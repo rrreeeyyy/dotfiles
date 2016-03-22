@@ -4,3 +4,5 @@ config/tower-of-babel
 config/workshopper
 config/configstore
 config/menus
+.rbenv/*
+!.rbenv/default-gems
