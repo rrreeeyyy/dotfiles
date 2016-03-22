@@ -34,6 +34,7 @@ get_dotfiles(){
 
   ls -1 ${workdir} |
   grep -v "README.md" |
+  grep -v "Brewfile" |
   grep -v ${scriptname}
   return 0
 }
