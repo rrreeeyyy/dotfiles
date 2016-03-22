@@ -110,4 +110,5 @@ brew 'sanemat/font/ricty', args: ['powerline', 'vim-powerline']
 brew 'tcnksm/ghr/ghr'
 cask 'google-chrome'
 cask 'skype'
+cask 'vagrant'
 cask 'virtualbox'
