@@ -112,6 +112,7 @@ brew 'homebrew/dupes/unzip'
 brew 'sanemat/font/ricty', args: ['powerline', 'vim-powerline']
 brew 'tcnksm/ghr/ghr'
 cask 'google-chrome'
+cask 'licecap'
 cask 'skype'
 cask 'vagrant'
 cask 'virtualbox'
