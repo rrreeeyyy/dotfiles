@@ -111,6 +111,7 @@ brew 'zsh'
 brew 'homebrew/dupes/unzip'
 brew 'sanemat/font/ricty', args: ['powerline', 'vim-powerline']
 brew 'tcnksm/ghr/ghr'
+cask 'dash'
 cask 'google-chrome'
 cask 'licecap'
 cask 'skype'
