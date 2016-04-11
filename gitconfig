@@ -1,39 +1,41 @@
 [user]
-        name = Yoshikawa Ryota
-        email = yoshikawa@rrreeeyyy.com
-	signingkey = 318A0319
+  name = Yoshikawa Ryota
+  email = yoshikawa@rrreeeyyy.com
+  signingkey = 65DACFD4
 [core]
-        editor = vim
-        excludesfile = ~/.gitignore
+  editor = vim
+  excludesfile = ~/.gitignore
 [push]
-        default = current
+  default = current
 [filter "media"]
-        required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
 [color]
-        diff = auto
-        status = auto
-        branch = auto
-        grep = auto
+  diff = auto
+  status = auto
+  branch = auto
+  grep = auto
 [alias]
-        st = status
-        co = checkout
-        ci = commit -v
-        di = diff
-        br = branch
-        puhs = push
-        psuh = push
-        pus = push
-        puh = push
-        pl = !git pull && git submodule update --init
+  st = status
+  co = checkout
+  ci = commit -v
+  di = diff
+  br = branch
+  puhs = push
+  psuh = push
+  pus = push
+  puh = push
+  pl = !git pull && git submodule update --init
 [merge]
-	tool = vimdiff
+  tool = vimdiff
 [diff]
-	tool = vimdiff
+  tool = vimdiff
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
 [commit]
-	gpgsign = true
+  gpgsign = true
+[gpg]
+  program = gpg2
