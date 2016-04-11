@@ -1,6 +1,7 @@
 [user]
         name = Yoshikawa Ryota
         email = yoshikawa@rrreeeyyy.com
+	signingkey = 318A0319
 [core]
         editor = vim
         excludesfile = ~/.gitignore
@@ -34,3 +35,5 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[commit]
+	gpgsign = true
