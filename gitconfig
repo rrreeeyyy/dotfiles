@@ -27,6 +27,7 @@
   pus = push
   puh = push
   pl = !git pull && git submodule update --init
+  lg = log --graph --all --decorate --abbrev-commit --branches --date=short --show-signature
 [merge]
   tool = vimdiff
 [diff]
